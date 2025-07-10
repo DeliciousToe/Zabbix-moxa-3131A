@@ -1,0 +1,1040 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>7.0</version>
+    <template_groups>
+        <template_group>
+            <uuid>89cc81d6748e468391bcca7c1becc5ae</uuid>
+            <name>SNMP devices</name>
+        </template_group>
+        <template_group>
+            <uuid>2257d00f402f43f0b0c6753715c0e123</uuid>
+            <name>Templates/Network devices</name>
+        </template_group>
+    </template_groups>
+    <templates>
+        <template>
+            <uuid>74603cdca0fa4b4cbb5868182577d4fc</uuid>
+            <template>MOXA AWK-3131A by SNMP</template>
+            <name>MOXA AWK-3131A by SNMP</name>
+            <description>Template for monitoring MOXA AWK-3131A devices via SNMP</description>
+            <groups>
+                <group>
+                    <name>SNMP devices</name>
+                </group>
+                <group>
+                    <name>Templates/Network devices</name>
+                </group>
+            </groups>
+            <items>
+                <item>
+                    <uuid>e5369d91c1574f119118b18e849f9416</uuid>
+                    <name>Number of network interfaces</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.2.1.2.1.0</snmp_oid>
+                    <key>snmp.get[ifNumber.0]</key>
+                    <delay>1h</delay>
+                    <history>7d</history>
+                    <value_type>FLOAT</value_type>
+                    <trends>30d</trends>
+                    <description>The number of network interfaces present on this system (ifNumber.0)</description>
+                    <tags>
+                        <tag>
+                            <tag>moxa</tag>
+                            <value>information</value>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>da88ef00935f48a5a6ce418b3fe2aae8</uuid>
+                    <name>System Contact</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.2.1.1.4.0</snmp_oid>
+                    <key>snmp.get[sysContact.0]</key>
+                    <delay>1h</delay>
+                    <history>30d</history>
+                    <value_type>TEXT</value_type>
+                    <trends>0</trends>
+                    <status>DISABLED</status>
+                    <description>The textual identification of the contact person for this managed node, together with information on how to contact that person (sysContact.0)</description>
+                    <tags>
+                        <tag>
+                            <tag>moxa</tag>
+                            <value>information</value>
+                        </tag>
+                    </tags>
+                    <triggers>
+                        <trigger>
+                            <uuid>1d6a2b0ccfd240d38ce5d8c65f5d2fff</uuid>
+                            <expression>nodata(/MOXA AWK-3131A by SNMP/snmp.get[sysContact.0],1h)=1 or last(/MOXA AWK-3131A by SNMP/snmp.get[sysContact.0])=&quot;&quot;</expression>
+                            <name>System Contact is not set on {HOST.NAME}</name>
+                            <priority>WARNING</priority>
+                            <description>System Contact (sysContact.0) is empty or not available for 1 hour.</description>
+                            <manual_close>YES</manual_close>
+                            <tags>
+                                <tag>
+                                    <tag>moxa</tag>
+                                    <value>configuration</value>
+                                </tag>
+                            </tags>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>7987b8e697034c55b318a4ba439e302b</uuid>
+                    <name>Device description</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.2.1.1.1.0</snmp_oid>
+                    <key>snmp.get[sysDescr.0]</key>
+                    <delay>1h</delay>
+                    <history>30d</history>
+                    <value_type>TEXT</value_type>
+                    <trends>0</trends>
+                    <description>System description (sysDescr.0)</description>
+                    <tags>
+                        <tag>
+                            <tag>moxa</tag>
+                            <value>information</value>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>0009da979bda4a3e9e9fa24e53c8d53c</uuid>
+                    <name>System Location</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.2.1.1.6.0</snmp_oid>
+                    <key>snmp.get[sysLocation.0]</key>
+                    <delay>1h</delay>
+                    <value_type>TEXT</value_type>
+                    <trends>0</trends>
+                    <status>DISABLED</status>
+                    <description>The physical location of this node (e.g., 'telephone closet, 3rd floor') (sysLocation.0)</description>
+                    <tags>
+                        <tag>
+                            <tag>moxa</tag>
+                            <value>information</value>
+                        </tag>
+                    </tags>
+                    <triggers>
+                        <trigger>
+                            <uuid>df5b597edfee41b29db132310a65777a</uuid>
+                            <expression>nodata(/MOXA AWK-3131A by SNMP/snmp.get[sysLocation.0],1h)=1 or last(/MOXA AWK-3131A by SNMP/snmp.get[sysLocation.0])=&quot;&quot;</expression>
+                            <name>System Location is not set on {HOST.NAME}</name>
+                            <priority>WARNING</priority>
+                            <description>System Location (sysLocation.0) is empty or not available for 1 hour.</description>
+                            <manual_close>YES</manual_close>
+                            <tags>
+                                <tag>
+                                    <tag>moxa</tag>
+                                    <value>configuration</value>
+                                </tag>
+                            </tags>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>21554ee0b7004e3c9c42a1147ed4561b</uuid>
+                    <name>Device name</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.2.1.1.5.0</snmp_oid>
+                    <key>snmp.get[sysName.0]</key>
+                    <delay>1h</delay>
+                    <history>30d</history>
+                    <value_type>TEXT</value_type>
+                    <trends>0</trends>
+                    <description>An administratively-assigned name for this managed node (sysName.0)</description>
+                    <tags>
+                        <tag>
+                            <tag>moxa</tag>
+                            <value>information</value>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>0d16e3eb34e94459b6eed3f87a6268e7</uuid>
+                    <name>System Object ID</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.2.1.1.2.0</snmp_oid>
+                    <key>snmp.get[sysObjectID.0]</key>
+                    <delay>1h</delay>
+                    <history>30d</history>
+                    <value_type>TEXT</value_type>
+                    <trends>0</trends>
+                    <description>The vendor's authoritative identification of the network management subsystem contained in the entity (sysObjectID.0)</description>
+                    <tags>
+                        <tag>
+                            <tag>moxa</tag>
+                            <value>information</value>
+                        </tag>
+                    </tags>
+                    <triggers>
+                        <trigger>
+                            <uuid>6cf27298e1b642fd969c8e9c2d222612</uuid>
+                            <expression>last(/MOXA AWK-3131A by SNMP/snmp.get[sysObjectID.0],#1)&lt;&gt;last(/MOXA AWK-3131A by SNMP/snmp.get[sysObjectID.0])</expression>
+                            <name>System Object ID has changed on {HOST.NAME}</name>
+                            <priority>INFO</priority>
+                            <description>System Object ID is different than it was before.</description>
+                            <manual_close>YES</manual_close>
+                            <tags>
+                                <tag>
+                                    <tag>moxa</tag>
+                                    <value>configuration</value>
+                                </tag>
+                            </tags>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>f0df2f2622874a06bc4a73a87126886b</uuid>
+                    <name>System OID Last Change</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.2.1.1.8.0</snmp_oid>
+                    <key>snmp.get[sysORLastChange.0]</key>
+                    <delay>1h</delay>
+                    <history>7d</history>
+                    <value_type>FLOAT</value_type>
+                    <trends>0</trends>
+                    <units>uptime</units>
+                    <description>The value of sysUpTime at the time this entry was last added or modified (sysORLastChange.0)</description>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <parameters>
+                                <parameter>0.01</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                    <tags>
+                        <tag>
+                            <tag>moxa</tag>
+                            <value>availability</value>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>1246ecc7a63d4737aa42384aff3d6cd3</uuid>
+                    <name>System Services</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.2.1.1.7.0</snmp_oid>
+                    <key>snmp.get[sysServices.0]</key>
+                    <delay>1h</delay>
+                    <history>7d</history>
+                    <value_type>FLOAT</value_type>
+                    <trends>30d</trends>
+                    <description>A value which indicates the services offered by this entity (sysServices.0)</description>
+                    <tags>
+                        <tag>
+                            <tag>moxa</tag>
+                            <value>information</value>
+                        </tag>
+                    </tags>
+                    <triggers>
+                        <trigger>
+                            <uuid>9448bdcb75044c55bac5779165d43d89</uuid>
+                            <expression>last(/MOXA AWK-3131A by SNMP/snmp.get[sysServices.0],#1)&lt;&gt;last(/MOXA AWK-3131A by SNMP/snmp.get[sysServices.0])</expression>
+                            <name>System services have changed on {HOST.NAME}</name>
+                            <priority>INFO</priority>
+                            <description>The system services offered by the device have changed.</description>
+                            <manual_close>YES</manual_close>
+                            <tags>
+                                <tag>
+                                    <tag>moxa</tag>
+                                    <value>configuration</value>
+                                </tag>
+                            </tags>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>c33a48cfd2f549fdb7677e079c6cd936</uuid>
+                    <name>Device uptime</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.2.1.1.3.0</snmp_oid>
+                    <key>snmp.get[sysUpTimeInstance]</key>
+                    <history>7d</history>
+                    <value_type>FLOAT</value_type>
+                    <trends>30d</trends>
+                    <units>uptime</units>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <parameters>
+                                <parameter>0.01</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                    <tags>
+                        <tag>
+                            <tag>moxa</tag>
+                            <value>availability</value>
+                        </tag>
+                    </tags>
+                </item>
+            </items>
+            <discovery_rules>
+                <discovery_rule>
+                    <uuid>7bc81c6081154fd6883755493641efd0</uuid>
+                    <name>Network interfaces discovery</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>discovery[{#SNMP_OID},1.3.6.1.2.1.2.2.1.2,{#IFALIAS},1.3.6.1.2.1.31.1.1.1.18,{#IFNAME},1.3.6.1.2.1.31.1.1.1.1,{#IFDESCR},1.3.6.1.2.1.2.2.1.2,{#IFTYPE},1.3.6.1.2.1.2.2.1.3,{#IFSPEED},1.3.6.1.2.1.2.2.1.5,{#IFOPERSTATUS},1.3.6.1.2.1.2.2.1.8,{#IFADMINSTATUS},1.3.6.1.2.1.2.2.1.7]</snmp_oid>
+                    <key>net.if.discovery</key>
+                    <delay>1h</delay>
+                    <lifetime>30d</lifetime>
+                    <enabled_lifetime_type>DISABLE_NEVER</enabled_lifetime_type>
+                    <item_prototypes>
+                        <item_prototype>
+                            <uuid>99ace2f5c5db4fc890c2ba9b56641662</uuid>
+                            <name>Interface {#IFNAME}({#IFALIAS}): Admin status</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>ifAdminStatus.{#SNMPINDEX}</snmp_oid>
+                            <key>net.if.admin.status[ifAdminStatus.{#SNMPINDEX}]</key>
+                            <history>7d</history>
+                            <value_type>FLOAT</value_type>
+                            <trends>0</trends>
+                            <description>The desired state of the interface (ifAdminStatus.{#SNMPINDEX})</description>
+                            <valuemap>
+                                <name>SNMP interface status (ifAdminStatus)</name>
+                            </valuemap>
+                            <tags>
+                                <tag>
+                                    <tag>moxa</tag>
+                                    <value>network</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>e91a1fd7af1048fd8b5e0142bf370fa8</uuid>
+                            <name>Interface {#IFNAME}({#IFALIAS}): Inbound broadcast packets</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>ifHCInBroadcastPkts.{#SNMPINDEX}</snmp_oid>
+                            <key>net.if.in.bcast[ifHCInBroadcastPkts.{#SNMPINDEX}]</key>
+                            <history>7d</history>
+                            <value_type>FLOAT</value_type>
+                            <units>pps</units>
+                            <description>The number of broadcast packets delivered to a higher-layer protocol (ifHCInBroadcastPkts.{#SNMPINDEX})</description>
+                            <tags>
+                                <tag>
+                                    <tag>moxa</tag>
+                                    <value>network</value>
+                                </tag>
+                            </tags>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <uuid>4dd1ec7205544844adaf51148d84bb13</uuid>
+                                    <expression>last(/MOXA AWK-3131A by SNMP/net.if.in.bcast[ifHCInBroadcastPkts.{#SNMPINDEX}]) &gt; 500</expression>
+                                    <name>High inbound broadcast packet rate on interface {#IFNAME}({#IFALIAS})</name>
+                                    <priority>WARNING</priority>
+                                    <description>The rate of inbound broadcast packets on interface {#IFNAME} is high.</description>
+                                    <manual_close>YES</manual_close>
+                                    <tags>
+                                        <tag>
+                                            <tag>moxa</tag>
+                                            <value>network</value>
+                                        </tag>
+                                        <tag>
+                                            <tag>performance</tag>
+                                            <value>packets</value>
+                                        </tag>
+                                    </tags>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>0cbdf36ca03142cb9838b9ac995a81ca</uuid>
+                            <name>Interface {#IFNAME}({#IFALIAS}): Inbound discards</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>ifInDiscards.{#SNMPINDEX}</snmp_oid>
+                            <key>net.if.in.discards[ifInDiscards.{#SNMPINDEX}]</key>
+                            <history>7d</history>
+                            <value_type>FLOAT</value_type>
+                            <units>discards/s</units>
+                            <description>The number of inbound packets that were chosen to be discarded even though no errors had been detected to prevent their being deliverable to a higher-layer protocol (ifInDiscards.{#SNMPINDEX})</description>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                    <parameters>
+                                        <parameter/>
+                                    </parameters>
+                                </step>
+                            </preprocessing>
+                            <tags>
+                                <tag>
+                                    <tag>moxa</tag>
+                                    <value>network</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>21e0f88898744381b8f2a87b47f81ae7</uuid>
+                            <name>Interface {#IFNAME}({#IFALIAS}): Inbound errors</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>ifInErrors.{#SNMPINDEX}</snmp_oid>
+                            <key>net.if.in.errors[ifInErrors.{#SNMPINDEX}]</key>
+                            <history>7d</history>
+                            <value_type>FLOAT</value_type>
+                            <units>errors/s</units>
+                            <description>The number of inbound packets that contained errors preventing them from being deliverable to a higher-layer protocol (ifInErrors.{#SNMPINDEX})</description>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                    <parameters>
+                                        <parameter/>
+                                    </parameters>
+                                </step>
+                            </preprocessing>
+                            <tags>
+                                <tag>
+                                    <tag>moxa</tag>
+                                    <value>network</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>dd3e126d41c3495db70f30edfe3b0c16</uuid>
+                            <name>Interface {#IFNAME}({#IFALIAS}): Inbound multicast packets</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>ifHCInMulticastPkts.{#SNMPINDEX}</snmp_oid>
+                            <key>net.if.in.mcast[ifHCInMulticastPkts.{#SNMPINDEX}]</key>
+                            <history>7d</history>
+                            <value_type>FLOAT</value_type>
+                            <units>pps</units>
+                            <description>The number of multicast packets delivered to a higher-layer protocol (ifHCInMulticastPkts.{#SNMPINDEX})</description>
+                            <tags>
+                                <tag>
+                                    <tag>moxa</tag>
+                                    <value>network</value>
+                                </tag>
+                            </tags>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <uuid>5b9eeb5fce2c41be95e4ede34c923329</uuid>
+                                    <expression>last(/MOXA AWK-3131A by SNMP/net.if.in.mcast[ifHCInMulticastPkts.{#SNMPINDEX}]) &gt; 1000</expression>
+                                    <name>High inbound multicast packet rate on interface {#IFNAME}({#IFALIAS})</name>
+                                    <priority>WARNING</priority>
+                                    <description>The rate of inbound multicast packets on interface {#IFNAME} is high.</description>
+                                    <manual_close>YES</manual_close>
+                                    <tags>
+                                        <tag>
+                                            <tag>moxa</tag>
+                                            <value>network</value>
+                                        </tag>
+                                        <tag>
+                                            <tag>performance</tag>
+                                            <value>packets</value>
+                                        </tag>
+                                    </tags>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>bea41f41504b4b189337b5d8df058f69</uuid>
+                            <name>Interface {#IFNAME}({#IFALIAS}): Inbound unicast packets</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>ifHCInUcastPkts.{#SNMPINDEX}</snmp_oid>
+                            <key>net.if.in.ucast[ifHCInUcastPkts.{#SNMPINDEX}]</key>
+                            <history>7d</history>
+                            <value_type>FLOAT</value_type>
+                            <units>pps</units>
+                            <description>The number of unicast packets delivered to a higher-layer protocol (ifHCInUcastPkts.{#SNMPINDEX})</description>
+                            <tags>
+                                <tag>
+                                    <tag>moxa</tag>
+                                    <value>network</value>
+                                </tag>
+                            </tags>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <uuid>05f728cb732f4e5d9f6e98c2110108cc</uuid>
+                                    <expression>last(/MOXA AWK-3131A by SNMP/net.if.in.ucast[ifHCInUcastPkts.{#SNMPINDEX}]) &gt; 10000</expression>
+                                    <name>High inbound unicast packet rate on interface {#IFNAME}({#IFALIAS})</name>
+                                    <priority>WARNING</priority>
+                                    <description>The rate of inbound unicast packets on interface {#IFNAME} is high.</description>
+                                    <manual_close>YES</manual_close>
+                                    <tags>
+                                        <tag>
+                                            <tag>moxa</tag>
+                                            <value>network</value>
+                                        </tag>
+                                        <tag>
+                                            <tag>performance</tag>
+                                            <value>packets</value>
+                                        </tag>
+                                    </tags>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>0eda9efaf30f4f0e822e2fdd81ac9602</uuid>
+                            <name>Interface {#IFNAME}({#IFALIAS}): Inbound traffic</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>ifHCInOctets.{#SNMPINDEX}</snmp_oid>
+                            <key>net.if.in[ifHCInOctets.{#SNMPINDEX}]</key>
+                            <history>7d</history>
+                            <value_type>FLOAT</value_type>
+                            <units>Bps</units>
+                            <description>The total number of octets received on the interface, including framing characters (ifHCInOctets.{#SNMPINDEX})</description>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                    <parameters>
+                                        <parameter/>
+                                    </parameters>
+                                </step>
+                            </preprocessing>
+                            <tags>
+                                <tag>
+                                    <tag>moxa</tag>
+                                    <value>network</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>f173e7ce57f04109abe725377f1aee5a</uuid>
+                            <name>Interface {#IFNAME}({#IFALIAS}): Last change</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>ifLastChange.{#SNMPINDEX}</snmp_oid>
+                            <key>net.if.lastchange[ifLastChange.{#SNMPINDEX}]</key>
+                            <value_type>FLOAT</value_type>
+                            <trends>0</trends>
+                            <units>uptime</units>
+                            <description>The value of sysUpTime at the time this entry was last added or modified (ifLastChange.{#SNMPINDEX})</description>
+                            <preprocessing>
+                                <step>
+                                    <type>MULTIPLIER</type>
+                                    <parameters>
+                                        <parameter>0.01</parameter>
+                                    </parameters>
+                                </step>
+                            </preprocessing>
+                            <tags>
+                                <tag>
+                                    <tag>moxa</tag>
+                                    <value>network</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>43d748528e204ccbb26fa53aa588b040</uuid>
+                            <name>Interface {#IFNAME}({#IFALIAS}): MTU</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>ifMtu.{#SNMPINDEX}</snmp_oid>
+                            <key>net.if.mtu[ifMtu.{#SNMPINDEX}]</key>
+                            <delay>1h</delay>
+                            <history>7d</history>
+                            <value_type>FLOAT</value_type>
+                            <units>bytes</units>
+                            <description>The size of the largest datagram that can be sent on the interface, in octets (ifMtu.{#SNMPINDEX})</description>
+                            <tags>
+                                <tag>
+                                    <tag>moxa</tag>
+                                    <value>network</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>089eea633a404d0e8700b8146366e5f2</uuid>
+                            <name>Interface {#IFNAME}({#IFALIAS}): Outbound broadcast packets</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>ifHCOutBroadcastPkts.{#SNMPINDEX}</snmp_oid>
+                            <key>net.if.out.bcast[ifHCOutBroadcastPkts.{#SNMPINDEX}]</key>
+                            <history>7d</history>
+                            <value_type>FLOAT</value_type>
+                            <units>pps</units>
+                            <description>The total number of packets that higher-level protocols requested be transmitted as broadcast on this interface (ifHCOutBroadcastPkts.{#SNMPINDEX})</description>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                    <parameters>
+                                        <parameter/>
+                                    </parameters>
+                                </step>
+                            </preprocessing>
+                            <tags>
+                                <tag>
+                                    <tag>moxa</tag>
+                                    <value>network</value>
+                                </tag>
+                            </tags>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <uuid>9a208bdc6b9d45408c754d33dc21c8c9</uuid>
+                                    <expression>last(/MOXA AWK-3131A by SNMP/net.if.out.bcast[ifHCOutBroadcastPkts.{#SNMPINDEX}]) &gt; 500</expression>
+                                    <name>High outbound broadcast packet rate on interface {#IFNAME}({#IFALIAS})</name>
+                                    <priority>WARNING</priority>
+                                    <description>The rate of outbound broadcast packets on interface {#IFNAME} is high.</description>
+                                    <manual_close>YES</manual_close>
+                                    <tags>
+                                        <tag>
+                                            <tag>moxa</tag>
+                                            <value>network</value>
+                                        </tag>
+                                        <tag>
+                                            <tag>performance</tag>
+                                            <value>packets</value>
+                                        </tag>
+                                    </tags>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>5b0a6efdce8d4b4eb9dfe971f163a574</uuid>
+                            <name>Interface {#IFNAME}({#IFALIAS}): Outbound discards</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>ifOutDiscards.{#SNMPINDEX}</snmp_oid>
+                            <key>net.if.out.discards[ifOutDiscards.{#SNMPINDEX}]</key>
+                            <history>7d</history>
+                            <value_type>FLOAT</value_type>
+                            <units>discards/s</units>
+                            <description>The number of outbound packets that were chosen to be discarded even though no errors had been detected to prevent their being transmitted (ifOutDiscards.{#SNMPINDEX})</description>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                    <parameters>
+                                        <parameter/>
+                                    </parameters>
+                                </step>
+                            </preprocessing>
+                            <tags>
+                                <tag>
+                                    <tag>moxa</tag>
+                                    <value>network</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>5c2159001aa34be48ef98a7125b95777</uuid>
+                            <name>Interface {#IFNAME}({#IFALIAS}): Outbound errors</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>ifOutErrors.{#SNMPINDEX}</snmp_oid>
+                            <key>net.if.out.errors[ifOutErrors.{#SNMPINDEX}]</key>
+                            <history>7d</history>
+                            <value_type>FLOAT</value_type>
+                            <units>errors/s</units>
+                            <description>The number of outbound packets that could not be transmitted because of errors (ifOutErrors.{#SNMPINDEX})</description>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                    <parameters>
+                                        <parameter/>
+                                    </parameters>
+                                </step>
+                            </preprocessing>
+                            <tags>
+                                <tag>
+                                    <tag>moxa</tag>
+                                    <value>network</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>5fb031bb0cef46da972724056de2a8c4</uuid>
+                            <name>Interface {#IFNAME}({#IFALIAS}): Outbound multicast packets</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>ifHCOutMulticastPkts.{#SNMPINDEX}</snmp_oid>
+                            <key>net.if.out.mcast[ifHCOutMulticastPkts.{#SNMPINDEX}]</key>
+                            <history>7d</history>
+                            <value_type>FLOAT</value_type>
+                            <units>pps</units>
+                            <description>The total number of packets that higher-level protocols requested be transmitted as multicast on this interface (ifHCOutMulticastPkts.{#SNMPINDEX})</description>
+                            <tags>
+                                <tag>
+                                    <tag>moxa</tag>
+                                    <value>network</value>
+                                </tag>
+                            </tags>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <uuid>aa3b4d396fe842e282b190dcc91841a9</uuid>
+                                    <expression>last(/MOXA AWK-3131A by SNMP/net.if.out.mcast[ifHCOutMulticastPkts.{#SNMPINDEX}]) &gt; 1000</expression>
+                                    <name>High outbound multicast packet rate on interface {#IFNAME}({#IFALIAS})</name>
+                                    <priority>WARNING</priority>
+                                    <description>The rate of outbound multicast packets on interface {#IFNAME} is high.</description>
+                                    <manual_close>YES</manual_close>
+                                    <tags>
+                                        <tag>
+                                            <tag>moxa</tag>
+                                            <value>network</value>
+                                        </tag>
+                                        <tag>
+                                            <tag>performance</tag>
+                                            <value>packets</value>
+                                        </tag>
+                                    </tags>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>da491fb66288415184447d7bbb4750c0</uuid>
+                            <name>Interface {#IFNAME}({#IFALIAS}): Outbound unicast packets</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>ifHCOutUcastPkts.{#SNMPINDEX}</snmp_oid>
+                            <key>net.if.out.ucast[ifHCOutUcastPkts.{#SNMPINDEX}]</key>
+                            <history>7d</history>
+                            <value_type>FLOAT</value_type>
+                            <units>pps</units>
+                            <description>The total number of packets that higher-level protocols requested be transmitted as unicast on this interface (ifHCOutUcastPkts.{#SNMPINDEX})</description>
+                            <tags>
+                                <tag>
+                                    <tag>moxa</tag>
+                                    <value>network</value>
+                                </tag>
+                            </tags>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <uuid>0cee09ea013b4c158e1ae1f77a3280eb</uuid>
+                                    <expression>last(/MOXA AWK-3131A by SNMP/net.if.out.ucast[ifHCOutUcastPkts.{#SNMPINDEX}]) &gt; 10000</expression>
+                                    <name>High outbound unicast packet rate on interface {#IFNAME}({#IFALIAS})</name>
+                                    <priority>WARNING</priority>
+                                    <description>The rate of outbound unicast packets on interface {#IFNAME} is high.</description>
+                                    <manual_close>YES</manual_close>
+                                    <tags>
+                                        <tag>
+                                            <tag>moxa</tag>
+                                            <value>network</value>
+                                        </tag>
+                                        <tag>
+                                            <tag>performance</tag>
+                                            <value>packets</value>
+                                        </tag>
+                                    </tags>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>9491640d7196434c82bce62bc5efb683</uuid>
+                            <name>Interface {#IFNAME}({#IFALIAS}): Outbound traffic</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>ifHCOutOctets.{#SNMPINDEX}</snmp_oid>
+                            <key>net.if.out[ifHCOutOctets.{#SNMPINDEX}]</key>
+                            <history>7d</history>
+                            <value_type>FLOAT</value_type>
+                            <units>Bps</units>
+                            <description>The total number of octets transmitted out of the interface, including framing characters (ifHCOutOctets.{#SNMPINDEX})</description>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                    <parameters>
+                                        <parameter/>
+                                    </parameters>
+                                </step>
+                            </preprocessing>
+                            <tags>
+                                <tag>
+                                    <tag>moxa</tag>
+                                    <value>network</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>0dea762ca35f49bdb3143c866be902db</uuid>
+                            <name>Interface {#IFNAME}({#IFALIAS}): Physical address</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>ifPhysAddress.{#SNMPINDEX}</snmp_oid>
+                            <key>net.if.physaddr[ifPhysAddress.{#SNMPINDEX}]</key>
+                            <delay>1h</delay>
+                            <value_type>TEXT</value_type>
+                            <trends>0</trends>
+                            <description>The interface's media-specific 'address' (ifPhysAddress.{#SNMPINDEX})</description>
+                            <tags>
+                                <tag>
+                                    <tag>moxa</tag>
+                                    <value>network</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>f6d0bcdcd4d84b97bf097f43c7d3b110</uuid>
+                            <name>Interface {#IFNAME}({#IFALIAS}): Speed</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>ifSpeed.{#SNMPINDEX}</snmp_oid>
+                            <key>net.if.speed[ifSpeed.{#SNMPINDEX}]</key>
+                            <history>7d</history>
+                            <value_type>FLOAT</value_type>
+                            <units>bps</units>
+                            <description>The current bandwidth of the interface in bits per second (ifSpeed.{#SNMPINDEX})</description>
+                            <tags>
+                                <tag>
+                                    <tag>moxa</tag>
+                                    <value>network</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>6c7e760132a94d34a0a6c68a960b47a4</uuid>
+                            <name>Interface {#IFNAME}({#IFALIAS}): Operational status</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>ifOperStatus.{#SNMPINDEX}</snmp_oid>
+                            <key>net.if.status[ifOperStatus.{#SNMPINDEX}]</key>
+                            <history>7d</history>
+                            <value_type>FLOAT</value_type>
+                            <trends>0</trends>
+                            <description>The current operational state of the interface (ifOperStatus.{#SNMPINDEX})</description>
+                            <valuemap>
+                                <name>SNMP interface status (ifOperStatus)</name>
+                            </valuemap>
+                            <tags>
+                                <tag>
+                                    <tag>moxa</tag>
+                                    <value>network</value>
+                                </tag>
+                            </tags>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <uuid>7fa7ca87e1fa475396d12ed6bc9a3ca0</uuid>
+                                    <expression>last(/MOXA AWK-3131A by SNMP/net.if.status[ifOperStatus.{#SNMPINDEX}])=2</expression>
+                                    <name>Interface {#IFNAME}({#IFALIAS}) is down</name>
+                                    <priority>HIGH</priority>
+                                    <description>Operational status of interface {#IFNAME} is down.</description>
+                                    <manual_close>YES</manual_close>
+                                    <tags>
+                                        <tag>
+                                            <tag>moxa</tag>
+                                            <value>network</value>
+                                        </tag>
+                                        <tag>
+                                            <tag>status</tag>
+                                            <value>down</value>
+                                        </tag>
+                                    </tags>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>e8555b2a5ad64fb798e3fe21eb482b9d</uuid>
+                            <name>Interface {#IFNAME}({#IFALIAS}): Type</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>ifType.{#SNMPINDEX}</snmp_oid>
+                            <key>net.if.type[ifType.{#SNMPINDEX}]</key>
+                            <delay>1h</delay>
+                            <history>7d</history>
+                            <value_type>FLOAT</value_type>
+                            <trends>0</trends>
+                            <description>The type of interface, as defined in the IANAifType-MIB (ifType.{#SNMPINDEX})</description>
+                            <tags>
+                                <tag>
+                                    <tag>moxa</tag>
+                                    <value>network</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                    </item_prototypes>
+                    <trigger_prototypes>
+                        <trigger_prototype>
+                            <uuid>e8432a550778495fa9a8c8393fb0fdb0</uuid>
+                            <expression>last(/MOXA AWK-3131A by SNMP/net.if.speed[ifSpeed.{#SNMPINDEX}])&lt;100000000 and last(/MOXA AWK-3131A by SNMP/net.if.status[ifOperStatus.{#SNMPINDEX}])=1</expression>
+                            <name>Interface {#IFNAME}({#IFALIAS}) has low speed (current: {ITEM.VALUE})</name>
+                            <priority>AVERAGE</priority>
+                            <description>The interface {#IFNAME} speed is less than 100 Mbps while operational.</description>
+                            <manual_close>YES</manual_close>
+                            <tags>
+                                <tag>
+                                    <tag>moxa</tag>
+                                    <value>network</value>
+                                </tag>
+                                <tag>
+                                    <tag>performance</tag>
+                                    <value>speed</value>
+                                </tag>
+                            </tags>
+                        </trigger_prototype>
+                    </trigger_prototypes>
+                    <graph_prototypes>
+                        <graph_prototype>
+                            <uuid>ba4d28954b4e4400a91a783378b0a67e</uuid>
+                            <name>Interface {#IFNAME}({#IFALIAS}): Broadcast packets</name>
+                            <graph_items>
+                                <graph_item>
+                                    <color>199C0D</color>
+                                    <calc_fnc>ALL</calc_fnc>
+                                    <item>
+                                        <host>MOXA AWK-3131A by SNMP</host>
+                                        <key>net.if.in.mcast[ifHCInMulticastPkts.{#SNMPINDEX}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <color>F63100</color>
+                                    <calc_fnc>ALL</calc_fnc>
+                                    <item>
+                                        <host>MOXA AWK-3131A by SNMP</host>
+                                        <key>net.if.out.mcast[ifHCOutMulticastPkts.{#SNMPINDEX}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                        <graph_prototype>
+                            <uuid>fba5fab4bacf4b21a9fa50750e20137f</uuid>
+                            <name>Interface {#IFNAME}({#IFALIAS}): Errors and discards</name>
+                            <graph_items>
+                                <graph_item>
+                                    <color>00611C</color>
+                                    <item>
+                                        <host>MOXA AWK-3131A by SNMP</host>
+                                        <key>net.if.in.errors[ifInErrors.{#SNMPINDEX}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <color>F7941D</color>
+                                    <item>
+                                        <host>MOXA AWK-3131A by SNMP</host>
+                                        <key>net.if.out.errors[ifOutErrors.{#SNMPINDEX}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>2</sortorder>
+                                    <color>FC6EA3</color>
+                                    <item>
+                                        <host>MOXA AWK-3131A by SNMP</host>
+                                        <key>net.if.in.discards[ifInDiscards.{#SNMPINDEX}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>3</sortorder>
+                                    <color>6C59DC</color>
+                                    <item>
+                                        <host>MOXA AWK-3131A by SNMP</host>
+                                        <key>net.if.out.discards[ifOutDiscards.{#SNMPINDEX}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                        <graph_prototype>
+                            <uuid>aeb84f2e48a7436cacdf3d3ccc97cd53</uuid>
+                            <name>Interface {#IFNAME}({#IFALIAS}): Network traffic</name>
+                            <graph_items>
+                                <graph_item>
+                                    <color>1A7C11</color>
+                                    <item>
+                                        <host>MOXA AWK-3131A by SNMP</host>
+                                        <key>net.if.in[ifHCInOctets.{#SNMPINDEX}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <color>F63100</color>
+                                    <item>
+                                        <host>MOXA AWK-3131A by SNMP</host>
+                                        <key>net.if.out[ifHCOutOctets.{#SNMPINDEX}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                        <graph_prototype>
+                            <uuid>7e6e7b476e4a4170b3a74396b2f75fed</uuid>
+                            <name>Interface {#IFNAME}({#IFALIAS}): Speed</name>
+                            <graph_items>
+                                <graph_item>
+                                    <color>199C0D</color>
+                                    <calc_fnc>ALL</calc_fnc>
+                                    <item>
+                                        <host>MOXA AWK-3131A by SNMP</host>
+                                        <key>net.if.speed[ifSpeed.{#SNMPINDEX}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                        <graph_prototype>
+                            <uuid>329291cf61d04be78b17a7f600d3071b</uuid>
+                            <name>Interface {#IFNAME}({#IFALIAS}): Unicast packets</name>
+                            <graph_items>
+                                <graph_item>
+                                    <color>199C0D</color>
+                                    <calc_fnc>ALL</calc_fnc>
+                                    <item>
+                                        <host>MOXA AWK-3131A by SNMP</host>
+                                        <key>net.if.in.ucast[ifHCInUcastPkts.{#SNMPINDEX}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <color>F63100</color>
+                                    <calc_fnc>ALL</calc_fnc>
+                                    <item>
+                                        <host>MOXA AWK-3131A by SNMP</host>
+                                        <key>net.if.out.ucast[ifHCOutUcastPkts.{#SNMPINDEX}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                    </graph_prototypes>
+                </discovery_rule>
+            </discovery_rules>
+            <valuemaps>
+                <valuemap>
+                    <uuid>d07012e56a474dfe975c9e6f1c6f9ad7</uuid>
+                    <name>SNMP interface status (ifAdminStatus)</name>
+                    <mappings>
+                        <mapping>
+                            <value>1</value>
+                            <newvalue>up</newvalue>
+                        </mapping>
+                        <mapping>
+                            <value>2</value>
+                            <newvalue>down</newvalue>
+                        </mapping>
+                        <mapping>
+                            <value>3</value>
+                            <newvalue>testing</newvalue>
+                        </mapping>
+                    </mappings>
+                </valuemap>
+                <valuemap>
+                    <uuid>f67a109394fc40948d6539468473ed91</uuid>
+                    <name>SNMP interface status (ifOperStatus)</name>
+                    <mappings>
+                        <mapping>
+                            <value>1</value>
+                            <newvalue>up</newvalue>
+                        </mapping>
+                        <mapping>
+                            <value>2</value>
+                            <newvalue>down</newvalue>
+                        </mapping>
+                        <mapping>
+                            <value>3</value>
+                            <newvalue>testing</newvalue>
+                        </mapping>
+                        <mapping>
+                            <value>4</value>
+                            <newvalue>unknown</newvalue>
+                        </mapping>
+                        <mapping>
+                            <value>5</value>
+                            <newvalue>dormant</newvalue>
+                        </mapping>
+                        <mapping>
+                            <value>6</value>
+                            <newvalue>notPresent</newvalue>
+                        </mapping>
+                        <mapping>
+                            <value>7</value>
+                            <newvalue>lowerLayerDown</newvalue>
+                        </mapping>
+                    </mappings>
+                </valuemap>
+                <valuemap>
+                    <uuid>2bcabef5e34c4f26b2558d42ecf3d677</uuid>
+                    <name>SNMP interface type (ifType)</name>
+                    <mappings>
+                        <mapping>
+                            <value>1</value>
+                            <newvalue>other</newvalue>
+                        </mapping>
+                        <mapping>
+                            <value>6</value>
+                            <newvalue>ethernetCsmacd</newvalue>
+                        </mapping>
+                        <mapping>
+                            <value>24</value>
+                            <newvalue>loopback</newvalue>
+                        </mapping>
+                        <mapping>
+                            <value>71</value>
+                            <newvalue>ieee80211</newvalue>
+                        </mapping>
+                    </mappings>
+                </valuemap>
+            </valuemaps>
+        </template>
+    </templates>
+</zabbix_export>
